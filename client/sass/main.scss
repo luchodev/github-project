@@ -2,8 +2,10 @@
 
 @import "./base/base";
 @import "./base/typography";
+@import "./base/utilities";
 
 @import "./components/candidateDetail";
+@import "./components/customTable";
 @import "./components/queryRepositorios";
 @import "./components/registerForm";
 @import "./components/spinner";

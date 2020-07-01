@@ -1,0 +1,17 @@
+.custom-table {
+   &__body-row {
+      & > td {
+         font-size: 0.8rem;
+         padding: 0.4rem 0.7rem;
+      }
+   }
+
+   &__header-row {
+      & > th {
+         padding: 0.5rem;
+         background-color: $background-color-secondary;
+         color: $background-content-color;
+         font-weight: bold;
+      }
+   }
+}
