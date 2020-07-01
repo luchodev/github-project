@@ -3,7 +3,9 @@
 @import "./base/base";
 @import "./base/typography";
 
-@import "./components/candidate";
+@import "./components/candidateDetail";
+@import "./components/queryRepositorios";
 @import "./components/registerForm";
+@import "./components/spinner";
 
 @import "./pages/home";

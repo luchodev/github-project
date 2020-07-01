@@ -1,0 +1,13 @@
+.spinner {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: 100;
+
+   &__loader > svg {
+      fill: $background-color-primary;
+      height: 80;
+      width: 80;
+   }
+}

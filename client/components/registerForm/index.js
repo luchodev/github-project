@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form } from "formik";
 
-import FormField from "../fieldForm";
+import FormField from "../formField";
 import DateField from "../dateField";
 
 const RegisterForm = ({ initialValues, handleValidations, handleOnSubmit }) => {

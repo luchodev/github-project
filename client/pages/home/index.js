@@ -21,6 +21,7 @@ const Home = () => {
       setCookie("candidate", JSON.stringify(values), { path: "/" });
       setCandidate(values);
       setViewForm(false);
+      //TODO: verificar todos los 'console.log' en el proyecto
       console.log(values);
       console.log("Form submitted");
    };

@@ -1,47 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import { useCookies } from "react-cookie";
+import { trackPromise } from "react-promise-tracker";
+
+import CandidateDetails from "../../components/candidateDetails";
+import { getGithubRepositories } from "../../services";
+import LoadingSpinner from "../../components/spinner";
+import RepoForm from "../../components/repoForm";
+import { areas } from "../../utils/consts";
 
 const QueryCandidate = () => {
-   const [cookies, setCookies] = useCookies();
+   const [cookies] = useCookies();
+   const [requesting, setRequesting] = useState(false);
+
+   //  TODO: Validate passing the value of the cookie form parent component to avoid using the useCookies hook
    const candidate = cookies.candidate;
-   const fakeData = {
-      name: "Luis Arley",
-      lastName: "Ruiz Bolivar",
-      identification: "1013642552",
-      email: "luis20164@hotmail.es",
-      birthDate:
-         "Date Thu Aug 05 1993 00:00:00 GMT-0500 (Colombia Standard Time)",
-      gitUser: "https://github.com/luchodev",
+
+   const initialValues = {
+      gitUser: "",
    };
+
+   const handleOnSubmit = (values) => {
+      setRequesting(true);
+      trackPromise(
+         getGithubRepositories(values.gitUser)
+            .then((data) => {
+               console.log(data);
+               setRequesting(false);
+            })
+            .catch((err) => {
+               setRequesting(false);
+            }),
+         areas.gitRepository
+      );
+   };
+
+   const handleValidations = (values) => {
+      const errors = {};
+      if (!values.gitUser) {
+         errors.gitUser = "El usuario es requerido";
+      }
+
+      return errors;
+   };
+
    return (
-      <div className="candidate">
-         <div className="candidate__item">
-            <label>Nombre:</label>
-            <span>{candidate.name}</span>
-         </div>
-         <div className="candidate__item">
-            <label>Apellido:</label>
-            <span>{candidate.lastName}</span>
-         </div>
-         <div className="candidate__item">
-            <label>Cedula:</label>
-            <span>{candidate.identification}</span>
-         </div>
-         <div className="candidate__item">
-            <label>E-mail:</label>
-            <span>{candidate.email}</span>
-         </div>
-         <div className="candidate__item">
-            <label>F. Nacimiento:</label>
-            <span>
-               {new Date(candidate.birthDate).toISOString().substr(0, 10)}
-            </span>
-         </div>
-         <div className="candidate__item">
-            <label>Usuario Github:</label>
-            <span>{candidate.gitUser}</span>
-         </div>
-      </div>
+      <>
+         <CandidateDetails />
+         <RepoForm
+            initialValues={initialValues}
+            handleValidations={handleValidations}
+            handleOnSubmit={handleOnSubmit}
+            placeHolder={candidate.gitUser}
+            isRequesting={requesting}
+         />
+         <LoadingSpinner area={areas.gitRepository} />
+      </>
    );
 };
 

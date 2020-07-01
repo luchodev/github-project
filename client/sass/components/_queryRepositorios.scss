@@ -1,0 +1,14 @@
+.query-repo-form {
+   margin: 2rem;
+   display: flex;
+   align-items: baseline;
+
+   &__field {
+      display: flex;
+      flex-direction: column;
+   }
+
+   & > * {
+      margin: 0 2rem;
+   }
+}
