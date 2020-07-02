@@ -9,9 +9,26 @@
    &__header-row {
       & > th {
          padding: 0.5rem;
-         background-color: $background-color-secondary;
-         color: $background-content-color;
+         background-color: $background-shadow-terciary;
+         color: $background-color-primary;
          font-weight: bold;
       }
+   }
+}
+
+.table-container {
+   overflow-x: auto;
+   border: solid 1px $background-color-primary;
+   border-radius: 2px;
+   width: 100%;
+}
+
+.table-filter {
+   @include inputField;
+   margin-bottom: 2rem;
+   align-self: self-start;
+
+   @include respond(phone) {
+      width: 90%;
    }
 }

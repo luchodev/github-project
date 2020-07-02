@@ -33,8 +33,13 @@ const RepoForm = ({
                         component="small"
                      />
                   </div>
-                  {isRequesting && <span>hola</span>}
-                  <button className="form__btn">Consultar Repositorios</button>
+                  <button
+                     className={`form__btn form__btn--small ${
+                        isRequesting ? "form__btn--disable" : ""
+                     }`}
+                  >
+                     Consultar Repositorios
+                  </button>
                </div>
             </Form>
          )}

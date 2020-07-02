@@ -1,7 +1,6 @@
 .candidate {
    display: flex;
-   font-size: 0.8rem;
-   margin: 1rem 0;
+   font-size: 0.9rem;
    flex-wrap: wrap;
    justify-content: center;
 
@@ -19,7 +18,7 @@
       }
 
       & > span {
-         font-size: 0.7rem;
+         font-size: 0.8rem;
       }
    }
 }

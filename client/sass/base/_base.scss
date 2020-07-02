@@ -3,15 +3,16 @@
 *::before {
    margin: 0;
    padding: 0;
-   box-sizing: border-box;
+   box-sizing: inherit;
 }
 
 body {
-   background-image: linear-gradient(
-      to right bottom,
-      $background-color-primary,
-      $background-color-secondary
-   );
+   box-sizing: border-box;
+   background: linear-gradient(
+         $background-color-primary,
+         $background-image-color
+      ),
+      url("./../../img/background.png");
+   background-attachment: fixed;
    background-size: cover;
-   background-repeat: no-repeat;
 }

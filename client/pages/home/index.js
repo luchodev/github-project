@@ -20,9 +20,6 @@ const Home = () => {
    const handleOnSubmit = (values) => {
       setCookie("candidate", JSON.stringify(values), { path: "/" });
       setViewForm(false);
-      //TODO: verificar todos los 'console.log' en el proyecto
-      console.log(values);
-      console.log("Form submitted");
    };
 
    const handleValidations = (values) => {
@@ -37,6 +34,10 @@ const Home = () => {
 
       if (!values.email) {
          errors.email = "El campo E-mail es requerido";
+      } else if (
+         !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+      ) {
+         errors.email = "La dirección de correo no es valida";
       }
 
       if (!values.identification) {
@@ -57,7 +58,7 @@ const Home = () => {
    return (
       <div className="home">
          <div className="home__container">
-            {!viewForm ? (
+            {viewForm ? (
                <RegisterForm
                   initialValues={initialValues}
                   handleValidations={handleValidations}

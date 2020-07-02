@@ -1,7 +1,13 @@
 .query-repo-form {
-   margin: 2rem;
+   margin: 0 2rem;
    display: flex;
    align-items: baseline;
+
+   @include respond(tab-port) {
+      flex-direction: column;
+      align-items: center;
+      margin: 2rem 0 1rem 0;
+   }
 
    &__field {
       display: flex;
@@ -10,5 +16,11 @@
 
    & > * {
       margin: 0 2rem;
+   }
+
+   & > button {
+      @include respond(tab-port) {
+         margin: 1rem 0;
+      }
    }
 }

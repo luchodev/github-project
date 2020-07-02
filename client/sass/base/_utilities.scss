@@ -1,6 +1,12 @@
-.table-container {
-   width: 80%;
-   overflow-x: auto;
-   border: solid 1px $background-color-primary;
-   border-radius: 2px;
+.Toastify__toast-body {
+   font-size: 0.8rem;
+   text-align: center;
+}
+
+.centered {
+   align-self: center;
+}
+
+.not-found-content {
+   text-align: center;
 }

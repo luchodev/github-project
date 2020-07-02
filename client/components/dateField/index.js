@@ -7,6 +7,8 @@ registerLocale("es", es);
 const DateField = ({ errors, touched, labelTitle, fieldName }) => {
    const { setFieldValue } = useFormikContext();
    const [field] = useField({ name: fieldName });
+   let maxDate = new Date();
+   maxDate.setFullYear(maxDate.getFullYear() - 15);
 
    return (
       <>
@@ -23,6 +25,11 @@ const DateField = ({ errors, touched, labelTitle, fieldName }) => {
                selected={(field.value && new Date(field.value)) || null}
                name={fieldName}
                locale="es"
+               maxDate={maxDate}
+               yearDropdownItemNumber={35}
+               showMonthDropdown
+               showYearDropdown
+               scrollableYearDropdown
                placeholderText={labelTitle}
                dateFormat="MMMM d, yyyy"
                onChange={(val) => {

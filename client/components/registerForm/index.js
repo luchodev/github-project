@@ -51,8 +51,7 @@ const RegisterForm = ({ initialValues, handleValidations, handleOnSubmit }) => {
                      errors={errors}
                      touched={touched}
                   />
-
-                  <button className="form__btn">Registrarse</button>
+                  <button className="form__btn centered">Registrarse</button>
                </Form>
             )}
          </Formik>

@@ -17,48 +17,27 @@ module.exports = {
             },
          },
          {
-            test: /(main\.scss)$/,
+            test: /(main\.scss|.css)$/,
             use: [
                "style-loader",
                "css-loader",
-               //  "resolve-url-loader",
+               "resolve-url-loader",
                "sass-loader",
             ],
          },
-         //  {
-         //     test: /\.(png|jpg|svg)$/i,
-         //     use: [
-         //        {
-         //           loader: "url-loader",
-         //           options: {
-         //              limit: 9192,
-         //              outputPath: "images",
-         //              name: "[name].[ext]",
-         //           },
-         //        },
-         //     ],
-         //  },
-         //  {
-         //     test: /\.(woff|ttf)$/,
-         //     use: [
-         //        {
-         //           loader: "url-loader",
-         //           options: {
-         //              limit: 9192,
-         //              outputPath: "fonts",
-         //              name: "[name].[ext]",
-         //           },
-         //        },
-         //     ],
-         //  },
-         //  {
-         //     test: /\.gif$/,
-         //     loader: "file-loader",
-         //     options: {
-         //        outputPath: "images",
-         //        name: "[name].[ext]",
-         //     },
-         //  },
+         {
+            test: /\.png$/,
+            use: [
+               {
+                  loader: "url-loader",
+                  options: {
+                     limit: 9192,
+                     outputPath: "images",
+                     name: "[name].[ext]",
+                  },
+               },
+            ],
+         },
       ],
    },
    plugins: [new LiveReloadPlugin()],
